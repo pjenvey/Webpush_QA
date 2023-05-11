@@ -199,10 +199,10 @@
                                 } catch (e) {
                                     console.warn("Crypto-Key support unavailable.");
                                 }
-                                let parsed_endpoint = new URL(subscription_info.endpoint);
+                                let parsed = new URL(subscription_info.endpoint);
                                 return vapid.sign({
                                     sub: "mailto:admin@example.com",
-                                    aud: parsed_endpoint.host,
+                                    aud: parsed.href,
                                     exp: (parseInt(Date.now() * .001) + 300).toString()
                                 }).then(headers => {
                                     delete(headers.publicKey);
@@ -387,7 +387,7 @@
          */
         let parsed = new URL(subscription_info.endpoint);
         let claims = {
-            "aud": parsed.host,
+            "aud": parsed.href,
             "exp": ((Date.now() * .001) + 300).toString(),
             "sub": "mailto:admin@example.com"
         };
