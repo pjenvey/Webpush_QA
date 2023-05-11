@@ -206,7 +206,6 @@
                                     exp: (parseInt(Date.now() * .001) + 300).toString()
                                 }).then(headers => {
                                     delete(headers.publicKey);
-                                    add_vapid();
                                 }).then(_ => subscription_info);
                             })
                             .catch(function (err) {
