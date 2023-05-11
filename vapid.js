@@ -152,7 +152,7 @@ class VapidToken {
             throw new Error(this.lang.errs.ERR_NO_KEYS);
         }
         if (!claims.hasOwnProperty("exp")) {
-            claims.exp = parseInt(Date.now() * .001) + 300;
+            claims.exp = (parseInt(Date.now() * .001) + 300).toString();
         }
         if (!claims.hasOwnProperty("sub")) {
             throw new Error(this.lang.errs.ERR_CLAIM_MIS, "sub");
