@@ -202,7 +202,7 @@
                                 let parsed = new URL(subscription_info.endpoint);
                                 return vapid.sign({
                                     sub: "mailto:admin@example.com",
-                                    aud: parsed.href,
+                                    aud: parsed.origin,
                                     exp: (parseInt(Date.now() * .001) + 300).toString()
                                 }).then(headers => {
                                     delete(headers.publicKey);
@@ -387,7 +387,7 @@
          */
         let parsed = new URL(subscription_info.endpoint);
         let claims = {
-            "aud": parsed.href,
+            "aud": parsed.origin,
             "exp": ((Date.now() * .001) + 300).toString(),
             "sub": "mailto:admin@example.com"
         };
