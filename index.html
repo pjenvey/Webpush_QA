@@ -387,7 +387,7 @@
          */
         let parsed = new URL(subscription_info.endpoint);
         let claims = {
-            "aud": parse.host,
+            "aud": parsed.host,
             "exp": ((Date.now() * .001) + 300).toString(),
             "sub": "mailto:admin@example.com"
         };
