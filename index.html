@@ -385,7 +385,12 @@
          See vapid.js for how this is built using Javascript.
          (I'll note that it's MUCH easier using other languages like python or java.)
          */
-        let claims = {"sub": "mailto:admin@example.com"};
+        parsed = new URL(subscription_info.endpoint);
+        let claims = {
+            "aud": parse.host,
+            "exp": ((Date.now() * .001) + 300).toString(),
+            "sub": "mailto:admin@example.com"
+        };
         let vapid_err = "";
         document.getElementById("error").innerHTML = vapid_err;
         if (vapid_err) {
