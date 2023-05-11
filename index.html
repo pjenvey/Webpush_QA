@@ -206,8 +206,7 @@
                                     exp: (parseInt(Date.now() * .001) + 300).toString()
                                 }).then(headers => {
                                     delete(headers.publicKey);
-                                    activate("vap");
-                                    encrypt(data);
+                                    add_vapid(subscription_info);
                                 }).then(_ => subscription_info);
                             })
                             .catch(function (err) {
@@ -380,7 +379,7 @@
         });
     }
 
-    function add_vapid() {
+    function add_vapid(subscription_info) {
         /* Add the optional VAPID information.
 
          See vapid.js for how this is built using Javascript.
