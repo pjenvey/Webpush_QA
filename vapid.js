@@ -38,7 +38,7 @@ class VapidToken {
             // Set expry to be 24 hours from now.
             exp = (Date.now() * .001) + 300
         }
-        this._claims["exp"] = exp;
+        this._claims["exp"] = exp.toString();
         this.lang = {
             info: {
                 OK_VAPID_KEYS: "VAPID Keys defined.",
