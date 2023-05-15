@@ -38,7 +38,7 @@ class VapidToken {
             // Set expry to be 24 hours from now.
             exp = (Date.now() * .001) + 300
         }
-        this._claims["exp"] = exp.toString();
+        this._claims["exp"] = exp;
         this.lang = {
             info: {
                 OK_VAPID_KEYS: "VAPID Keys defined.",
@@ -152,7 +152,7 @@ class VapidToken {
             throw new Error(this.lang.errs.ERR_NO_KEYS);
         }
         if (!claims.hasOwnProperty("exp")) {
-            claims.exp = (parseInt(Date.now() * .001) + 300).toString();
+            claims.exp = (parseInt(Date.now() * .001) + 300);
         }
         if (!claims.hasOwnProperty("sub")) {
             throw new Error(this.lang.errs.ERR_CLAIM_MIS, "sub");
